@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SetReadCarSystemPC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetReadCarSystemPCResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCarSystemPC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarSystemPCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarSystemPCResult" type="tns:ArrayOfCarSystemPC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCarSystemPC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CarSystemPC" type="tns:CarSystemPC" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CarSystemPC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PdVenda" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contrato" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdParcela" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valor" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorJuros" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorDesconto" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalPago" nillable="true" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="TpPagamento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TpAcao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NroAcordo" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParcAcordo" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParTotal" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValEntrada" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValParcela" nillable="true" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="VencProxParcela" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdProcessa" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TpForma" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CdEmpresa" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CdDev" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SeqLanc" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCarSystem_StatusDevedor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="codCliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarSystem_StatusDevedorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarSystem_StatusDevedorResult" type="tns:ArrayOfCarSystemStatusDevedor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCarSystemStatusDevedor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CarSystemStatusDevedor" type="tns:CarSystemStatusDevedor" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CarSystemStatusDevedor">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CodDevedor" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodCliente" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contrato" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Forma" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Obs" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DtGera" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValTotalAcordo" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="VencAcordo" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DtAcordo" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SetReadCarSystemPCSoapIn">
+    <wsdl:part name="parameters" element="tns:SetReadCarSystemPC" />
+  </wsdl:message>
+  <wsdl:message name="SetReadCarSystemPCSoapOut">
+    <wsdl:part name="parameters" element="tns:SetReadCarSystemPCResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarSystemPCSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarSystemPC" />
+  </wsdl:message>
+  <wsdl:message name="GetCarSystemPCSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarSystemPCResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarSystem_StatusDevedorSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarSystem_StatusDevedor" />
+  </wsdl:message>
+  <wsdl:message name="GetCarSystem_StatusDevedorSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarSystem_StatusDevedorResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TmkServicosSoap">
+    <wsdl:operation name="SetReadCarSystemPC">
+      <wsdl:input message="tns:SetReadCarSystemPCSoapIn" />
+      <wsdl:output message="tns:SetReadCarSystemPCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSystemPC">
+      <wsdl:input message="tns:GetCarSystemPCSoapIn" />
+      <wsdl:output message="tns:GetCarSystemPCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSystem_StatusDevedor">
+      <wsdl:input message="tns:GetCarSystem_StatusDevedorSoapIn" />
+      <wsdl:output message="tns:GetCarSystem_StatusDevedorSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TmkServicosSoap" type="tns:TmkServicosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetReadCarSystemPC">
+      <soap:operation soapAction="http://tempuri.org/SetReadCarSystemPC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSystemPC">
+      <soap:operation soapAction="http://tempuri.org/GetCarSystemPC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSystem_StatusDevedor">
+      <soap:operation soapAction="http://tempuri.org/GetCarSystem_StatusDevedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TmkServicosSoap12" type="tns:TmkServicosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetReadCarSystemPC">
+      <soap12:operation soapAction="http://tempuri.org/SetReadCarSystemPC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSystemPC">
+      <soap12:operation soapAction="http://tempuri.org/GetCarSystemPC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSystem_StatusDevedor">
+      <soap12:operation soapAction="http://tempuri.org/GetCarSystem_StatusDevedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TmkServicos">
+    <wsdl:port name="TmkServicosSoap" binding="tns:TmkServicosSoap">
+      <soap:address location="http://200.158.237.65:81/tmkservico/tmkservicos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TmkServicosSoap12" binding="tns:TmkServicosSoap12">
+      <soap12:address location="http://200.158.237.65:81/tmkservico/tmkservicos.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{56C29A71-F26A-4DA2-A308-4B4E95E31E5E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SGB</RootNamespace>
+    <AssemblyName>SGB</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>ico_meios_pag2.ico</ApplicationIcon>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ManifestCertificateThumbprint>828F8086DB9C605F0B33DF7FB73533F0C7CC8C60</ManifestCertificateThumbprint>
+    <ManifestKeyFile>SGB_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>false</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetZone>LocalIntranet</TargetZone>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>2012.4.3.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Boleto.Net, Version=2.0.1.5, Culture=neutral, PublicKeyToken=53630c3583b7ed5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Boleto.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.AgendaWeb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.AgendaWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.Banco, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.Banco.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.BancoDados, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.BancoDados.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.Boletos, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.Boletos.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.Debitos, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.Debitos.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.Login, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.Login.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.Remessa, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.Remessa.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.SGB, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.SGB.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.Technology, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.Technology.dll</HintPath>
+    </Reference>
+    <Reference Include="Carsystem.Tipos, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\Carsystem.Tipos.dll</HintPath>
+    </Reference>
+    <Reference Include="CarSystem.Utilidades, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\csLib\CarSystem.DLL\CarSystem.Utilidades.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\MicrosoftOfficeCore.15.0.0\lib\net35\Office.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="acertoValores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="acertoValores.Designer.cs">
+      <DependentUpon>acertoValores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adInad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adInad.Designer.cs">
+      <DependentUpon>adInad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aprovaTEF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="aprovaTEF.Designer.cs">
+      <DependentUpon>aprovaTEF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Baixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Baixa.designer.cs">
+      <DependentUpon>Baixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaixaSafra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaixaSafra.Designer.cs">
+      <DependentUpon>BaixaSafra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Banco.cs" />
+    <Compile Include="Banco\Banco_Safra.cs" />
+    <Compile Include="BloqueioBoletos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BloqueioBoletos.designer.cs">
+      <DependentUpon>BloqueioBoletos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Boletos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Boletos.designer.cs">
+      <DependentUpon>Boletos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSTech.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CSTech.Designer.cs">
+      <DependentUpon>CSTech.cs</DependentUpon>
+    </Compile>
+    <Compile Include="debitoAutomatico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="debitoAutomatico.Designer.cs">
+      <DependentUpon>debitoAutomatico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CriacaoRemessa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CriacaoRemessa.designer.cs">
+      <DependentUpon>CriacaoRemessa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fury.cs" />
+    <Compile Include="GeracaoBoletos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeracaoBoletos.designer.cs">
+      <DependentUpon>GeracaoBoletos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="igpm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="igpm.Designer.cs">
+      <DependentUpon>igpm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="infoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="infoCliente.designer.cs">
+      <DependentUpon>infoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InformacoesRemessas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformacoesRemessas.designer.cs">
+      <DependentUpon>InformacoesRemessas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="menu.Designer.cs">
+      <DependentUpon>menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NegativeOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NegativeOption.Designer.cs">
+      <DependentUpon>NegativeOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parcelas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parcelas.designer.cs">
+      <DependentUpon>Parcelas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="acertoValores.resx">
+      <DependentUpon>acertoValores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adInad.resx">
+      <DependentUpon>adInad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aprovaTEF.resx">
+      <DependentUpon>aprovaTEF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Baixa.resx">
+      <DependentUpon>Baixa.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaixaSafra.resx">
+      <DependentUpon>BaixaSafra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BloqueioBoletos.resx">
+      <DependentUpon>BloqueioBoletos.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Boletos.resx">
+      <DependentUpon>Boletos.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSTech.resx">
+      <DependentUpon>CSTech.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="debitoAutomatico.resx">
+      <DependentUpon>debitoAutomatico.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CriacaoRemessa.resx">
+      <DependentUpon>CriacaoRemessa.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeracaoBoletos.resx">
+      <DependentUpon>GeracaoBoletos.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="igpm.resx">
+      <DependentUpon>igpm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="infoCliente.resx">
+      <DependentUpon>infoCliente.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformacoesRemessas.resx">
+      <DependentUpon>InformacoesRemessas.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="menu.resx">
+      <DependentUpon>menu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NegativeOption.resx">
+      <DependentUpon>NegativeOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parcelas.resx">
+      <DependentUpon>Parcelas.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuitaParcelas.resx">
+      <DependentUpon>QuitaParcelas.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="analiseRetorno.resx">
+      <DependentUpon>analiseRetorno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SolicitacoesSGB.resx">
+      <DependentUpon>SolicitacoesSGB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuperSolicit.resx">
+      <DependentUpon>SuperSolicit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="transfPagamentos.resx">
+      <DependentUpon>transfPagamentos.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="verificaIGPM.resx">
+      <DependentUpon>verificaIGPM.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="QuitaParcelas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuitaParcelas.designer.cs">
+      <DependentUpon>QuitaParcelas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="analiseRetorno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="analiseRetorno.Designer.cs">
+      <DependentUpon>analiseRetorno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\tmkService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitacoesSGB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SolicitacoesSGB.designer.cs">
+      <DependentUpon>SolicitacoesSGB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SuperSolicit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuperSolicit.Designer.cs">
+      <DependentUpon>SuperSolicit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TMK.cs" />
+    <Compile Include="transfPagamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="transfPagamentos.designer.cs">
+      <DependentUpon>transfPagamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Util.cs" />
+    <Compile Include="verificaIGPM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="verificaIGPM.Designer.cs">
+      <DependentUpon>verificaIGPM.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Open Folder.GIF" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\Open FolderPQ.GIF" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ico_meios_pag2.ico" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\CarSystem.Bancos.Cielo.Conciliacao.DetalheROA+CamposDetalheROA.datasource" />
+    <None Include="Resources\loading_orange.gif" />
+    <None Include="Resources\newGroupPostIconStrip.bmp" />
+    <None Include="Resources\newGroupPostIconStrip.PNG" />
+    <Content Include="XMLFile1.xml" />
+    <None Include="Service References\tmkService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\tmkService\configuration.svcinfo" />
+    <None Include="Service References\tmkService\configuration91.svcinfo" />
+    <None Include="Service References\tmkService\SGB.tmkService.CarSystemPC.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\tmkService\SGB.tmkService.CarSystemStatusDevedor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\tmkService\tmkservicos.disco" />
+    <None Include="Service References\tmkService\tmkservicos.wsdl" />
+    <None Include="SGB_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\tmkService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Arquivo\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
