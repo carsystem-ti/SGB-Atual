@@ -86,13 +86,13 @@
             // btnSafra
             // 
             this.btnSafra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnSafra.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSafra.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnSafra.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSafra.Location = new System.Drawing.Point(236, 286);
             this.btnSafra.Name = "btnSafra";
             this.btnSafra.Size = new System.Drawing.Size(200, 33);
             this.btnSafra.TabIndex = 1;
-            this.btnSafra.Text = "Baixa Safra";
+            this.btnSafra.Text = "Baixa Safra/Santander ";
             this.btnSafra.UseVisualStyleBackColor = false;
             this.btnSafra.Click += new System.EventHandler(this.btnSafra_Click);
             // 

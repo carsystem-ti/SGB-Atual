@@ -514,34 +514,81 @@ namespace BoletoNet.Arquivo
                         barraProgresso.Maximum = cnab240.ListaDetalhes.Count;
 
                         barraProgresso.Value = 0;
-                    foreach (DetalheRetornoCNAB240 detalhe in cnab240.ListaDetalhes)
+
+                    if (codigo == 422)
                     {
-                        ListViewItem li = new ListViewItem(detalhe.SegmentoT.NomeSacado.Trim());
-                        li.Tag = detalhe;
-
-                        li.SubItems.Add(detalhe.SegmentoT.DataVencimento.ToString("dd/MM/yy"));
-                        li.SubItems.Add(detalhe.SegmentoU.DataCredito.ToString("dd/MM/yy"));
-                        li.SubItems.Add(detalhe.SegmentoT.ValorTitulo.ToString("###,###.00"));
-                        li.SubItems.Add(detalhe.SegmentoU.ValorPagoPeloSacado.ToString("###,###.00"));
-                        li.SubItems.Add(detalhe.SegmentoU.CodigoOcorrenciaSacado.ToString());
-                        //li.SubItems.Add("");
-
-                        if (detalhe.SegmentoU.ValorPagoPeloSacado > 0)
+                        foreach (DetalheRetornoCNAB240 detalhe in cnab240.ListaDetalhes)
                         {
-                            //li.SubItems.Add(detalhe.SegmentoT.NossoNumero);
-                            li.SubItems.Add(getStatusParcela(detalhe.SegmentoT.NossoNumero.Trim()));
+                            ListViewItem li = new ListViewItem(detalhe.SegmentoT.NomeSacado.Trim());
+                            li.Tag = detalhe;
+
+                            li.SubItems.Add(detalhe.SegmentoT.DataVencimento.ToString("dd/MM/yy"));
+                            li.SubItems.Add(detalhe.SegmentoU.DataCredito.ToString("dd/MM/yy"));
+                            li.SubItems.Add(detalhe.SegmentoT.ValorTitulo.ToString("###,###.00"));
+                            li.SubItems.Add(detalhe.SegmentoU.ValorPagoPeloSacado.ToString("###,###.00"));
+                            li.SubItems.Add(detalhe.SegmentoU.CodigoOcorrenciaSacado.ToString());
+                            //li.SubItems.Add("");
+
+                            if (detalhe.SegmentoU.ValorPagoPeloSacado > 0)
+                            {
+                                //li.SubItems.Add(detalhe.SegmentoT.NossoNumero);
+                                li.SubItems.Add(getStatusParcela(detalhe.SegmentoT.NossoNumero.Trim()));
+
+                            }
+                            else
+                            {
+                                li.SubItems.Add("");
+                            }
+                            li.SubItems.Add(detalhe.SegmentoT.NossoNumero);
+                            lstReturnFields.Items.Add(li);
+                            barraProgresso.Value++;
+
 
                         }
-                        else
-                        {
-                            li.SubItems.Add("");
-                        }
-                        li.SubItems.Add(detalhe.SegmentoT.NossoNumero);
-                        lstReturnFields.Items.Add(li);
-                        barraProgresso.Value++;
-                   
-
                     }
+                    if (codigo == 033)
+                    {
+                        foreach (DetalheRetornoCNAB240 detalhe in cnab240.ListaDetalhes)
+                        {
+                            //ListViewItem li = new ListViewItem(detalhe.SegmentoT.NomeSacado.Trim());
+                            //li.Tag = detalhe;
+
+                            //li.SubItems.Add(detalhe.SegmentoT.DataVencimento.ToString("dd/MM/yy"));
+                            //li.SubItems.Add(detalhe.SegmentoU.DataCredito.ToString("dd/MM/yy"));
+                            //li.SubItems.Add(detalhe.SegmentoT.ValorTitulo.ToString("###,###.00"));
+                            //li.SubItems.Add(detalhe.SegmentoU.ValorPagoPeloSacado.ToString("###,###.00"));
+                            //li.SubItems.Add(detalhe.SegmentoU.CodigoOcorrenciaSacado.ToString());
+                            ////li.SubItems.Add("");
+
+                            //if (detalhe.SegmentoU.ValorPagoPeloSacado > 0)
+                            //{
+                            //    //li.SubItems.Add(detalhe.SegmentoT.NossoNumero);
+                            //    li.SubItems.Add(getStatusParcela(detalhe.SegmentoT.NossoNumero.Trim()));
+
+                            //}
+                            //else
+                            //{
+                            //    li.SubItems.Add("");
+                            //}
+                            //li.SubItems.Add(detalhe.SegmentoT.NossoNumero);
+                            //lstReturnFields.Items.Add(li);
+                            ListViewItem li = new ListViewItem(detalhe.SegmentoT.NomeSacado.Trim());
+                            li.Tag = detalhe;
+
+                            li.SubItems.Add(detalhe.SegmentoT.DataVencimento.ToString("dd/MM/yy"));
+                            li.SubItems.Add(detalhe.SegmentoU.DataCredito.ToString("dd/MM/yy"));
+                            li.SubItems.Add(detalhe.SegmentoT.ValorTitulo.ToString("###,###.00"));
+                            li.SubItems.Add(detalhe.SegmentoU.ValorPagoPeloSacado.ToString("###,###.00"));
+                            li.SubItems.Add(detalhe.SegmentoU.CodigoOcorrenciaSacado.ToString());
+                            li.SubItems.Add("");
+                            li.SubItems.Add(detalhe.SegmentoT.NossoNumero.Remove(detalhe.SegmentoT.NossoNumero.Length - 1));
+                            lstReturnFields.Items.Add(li);
+                            barraProgresso.Value++;
+
+
+                        }
+                    }
+
 
                     MessageBox.Show("Arquivo aberto com sucesso!");
                 }
@@ -770,11 +817,11 @@ namespace BoletoNet.Arquivo
 
         private void lerToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            LerRetorno(422);
-            //if (radioButtonSafra.Checked)
-            //    LerRetorno(422);
-            //else if (radioButtonSudameris.Checked)
-            //    LerRetorno(422);
+           // LerRetorno(422);
+            if (rdbSafra.Checked)
+                LerRetorno(422);
+            else if (rdbSantander.Checked)
+                LerRetorno(33);
             //else if (radioButtonSantander.Checked)
             //    LerRetorno(33);
             //else if (radioButtonReal.Checked)
@@ -819,17 +866,18 @@ namespace BoletoNet.Arquivo
             }
         }
 
-        private int getContrato(string pNossoNumero,float vl_pago,int id_baixa)
+        private int setBaixa(string pNossoNumero,float vl_pago,int id_baixa,int nr_banco)
         {
 
             dados.Comandos.limpaParametros();
-            dados.Comandos.textoComando = "SGB.dbo.pro_BAI_efetuaBaixaSafraCodigo";
+            dados.Comandos.textoComando = "SGB.[Registro].[pro_BaixaTitulo_ArquivoRetorno]";
             dados.Comandos.tipoComando = CommandType.StoredProcedure;
             dados.Comandos.adicionaParametro("@nossoNumero", SqlDbType.VarChar, 12, pNossoNumero);
             dados.Comandos.adicionaParametro("@valor", SqlDbType.VarChar, 12, vl_pago);
             dados.Comandos.adicionaParametro("@usuario", SqlDbType.VarChar, 12, Environment.UserName);
             dados.Comandos.adicionaParametro("@tipoBaixa", SqlDbType.VarChar, 12, "LQ Normal");
             dados.Comandos.adicionaParametro("@codigoArquivo", SqlDbType.VarChar, 12, id_baixa);
+            dados.Comandos.adicionaParametro("@nr_banco", SqlDbType.Int, 12, nr_banco);
             dados.Comandos.adicionaParametro("@retorno", System.Data.SqlDbType.VarChar, 30, "", System.Data.ParameterDirection.Output);
 
 
@@ -939,48 +987,104 @@ namespace BoletoNet.Arquivo
         private void geraArquivo()
         {
             //string diretorio = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Baixas - Resultado\" + getTexto(cbEmpresa) + @"\" + getTexto(cbBancos);
-            string diretorio = @"E:\Baixas - Resultado\" + "Carsystem" + @"\" + "Safra";
-            CarSystem.Utilidades.IO.Arquivo.isExisteDir(diretorio, true);
+            if (rdbSafra.Checked == true)
+            {
+                string diretorio = @"E:\Baixas - Resultado\" + "Carsystem" + @"\" + "Safra";
 
-            string arquivo = diretorio + @"\BAIXA_" + DateTime.Today.ToString("ddMMyyyy") + "_" + "Carsystem" + "_" + "Safra" + ".log";
-            CarSystem.Utilidades.IO.Arquivo.stringTOtxt(arquivo, geraResultado());
+                CarSystem.Utilidades.IO.Arquivo.isExisteDir(diretorio, true);
+
+                string arquivo = diretorio + @"\BAIXA_" + DateTime.Today.ToString("ddMMyyyy") + "_" + "Carsystem" + "_" + "Safra" + ".log";
+                CarSystem.Utilidades.IO.Arquivo.stringTOtxt(arquivo, geraResultado());
+            }
+            if (rdbSantander.Checked == true)
+            {
+                string diretorio = @"E:\Baixas - Resultado\" + "Carsystem" + @"\" + "Santander";
+
+                CarSystem.Utilidades.IO.Arquivo.isExisteDir(diretorio, true);
+
+                string arquivo = diretorio + @"\BAIXA_" + DateTime.Today.ToString("ddMMyyyy") + "_" + "Carsystem" + "_" + "Santander " + ".log";
+                CarSystem.Utilidades.IO.Arquivo.stringTOtxt(arquivo, geraResultado());
+            }
+
         }
         private void btn_valor_Click(object sender, EventArgs e)
         {
-            _id_retorno = gravaArquivo(_arquivo); 
-            int _Baixas = 0;
-            int _retornoBaixa = 0;
-            foreach (ListViewItem itemRow in lstReturnFields.Items)
-            {
-                string Nome = itemRow.SubItems[0].Text;
-                string DataVencimento = itemRow.SubItems[1].Text;
-                string DataCredito = itemRow.SubItems[2].Text;
-                string ValorTitulo = itemRow.SubItems[3].Text;
-                float ValorPago = float.Parse(itemRow.SubItems[4].Text);
-                string CodRetorno = itemRow.SubItems[5].Text;
-                string situacao = itemRow.SubItems[6].Text;
-               
-                string NossoNumero = itemRow.SubItems[7].Text;
-                if (ValorPago > 0)
-                {
 
-                    _retornoBaixa =  getContrato(NossoNumero,ValorPago,_id_retorno);
-                    string ds_baixa = getDescricaoRetornoBaixa(_retornoBaixa);
-                    itemRow.SubItems[6].Text = ds_baixa;
-                    if (ds_baixa == "baixado")
+            if (rdbSafra.Checked == true)
+            {
+                _id_retorno = gravaArquivo(_arquivo);
+                int _Baixas = 0;
+                int _retornoBaixa = 0;
+                foreach (ListViewItem itemRow in lstReturnFields.Items)
+                {
+                    string Nome = itemRow.SubItems[0].Text;
+                    string DataVencimento = itemRow.SubItems[1].Text;
+                    string DataCredito = itemRow.SubItems[2].Text;
+                    string ValorTitulo = itemRow.SubItems[3].Text;
+                    float ValorPago = float.Parse(itemRow.SubItems[4].Text);
+                    string CodRetorno = itemRow.SubItems[5].Text;
+                    string situacao = itemRow.SubItems[6].Text;
+
+                    string NossoNumero = itemRow.SubItems[7].Text;
+                    if (ValorPago > 0)
                     {
-                        _Baixas = _Baixas + 1;
+
+                        _retornoBaixa = setBaixa(NossoNumero, ValorPago, _id_retorno,422);
+                        string ds_baixa = getDescricaoRetornoBaixa(_retornoBaixa);
+                        itemRow.SubItems[6].Text = ds_baixa;
+                        if (ds_baixa == "baixado")
+                        {
+                            _Baixas = _Baixas + 1;
+
+                        }
+
 
                     }
 
 
                 }
-
-
+                geraArquivo();
+                MessageBox.Show("Foram processadas: " + _Baixas.ToString() + " baixas");
             }
-            geraArquivo();
-            MessageBox.Show("Foram processadas: " + _Baixas.ToString() + " baixas");
+            if (rdbSantander.Checked == true)
+            {
+                _id_retorno = gravaArquivo(_arquivo);
+                int _Baixas = 0;
+                int _retornoBaixa = 0;
+                foreach (ListViewItem itemRow in lstReturnFields.Items)
+                {
+                    string Nome = itemRow.SubItems[0].Text;
+                    string DataVencimento = itemRow.SubItems[1].Text;
+                    string DataCredito = itemRow.SubItems[2].Text;
+                    string ValorTitulo = itemRow.SubItems[3].Text;
+                    float ValorPago = float.Parse(itemRow.SubItems[4].Text);
+                    string CodRetorno = itemRow.SubItems[5].Text;
+                    string situacao = itemRow.SubItems[6].Text;
+
+                    string NossoNumero = itemRow.SubItems[7].Text;
+                    if (ValorPago > 0 && CodRetorno == "06")
+                    {
+
+                        _retornoBaixa = setBaixa(NossoNumero, ValorPago, _id_retorno,033);
+                        string ds_baixa = getDescricaoRetornoBaixa(_retornoBaixa);
+                        itemRow.SubItems[6].Text = ds_baixa;
+                        if (ds_baixa == "baixado")
+                        {
+                            _Baixas = _Baixas + 1;
+
+                        }
+
+
+                    }
+
+
+                }
+                geraArquivo();
+                MessageBox.Show("Foram processadas: " + _Baixas.ToString() + " baixas");
+            }
+
         }
-      
+
+       
     }
 }

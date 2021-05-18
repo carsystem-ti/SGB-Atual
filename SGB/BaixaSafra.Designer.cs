@@ -66,14 +66,19 @@
             this.groupBoxBancos = new System.Windows.Forms.GroupBox();
             this.btn_valor = new System.Windows.Forms.Button();
             this.barraProgresso = new System.Windows.Forms.ProgressBar();
+            this.groupBanco = new System.Windows.Forms.GroupBox();
+            this.rdbSafra = new System.Windows.Forms.RadioButton();
+            this.rdbSantander = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.groupBoxBancos.SuspendLayout();
+            this.groupBanco.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioButtonCNAB240
             // 
             this.radioButtonCNAB240.AutoSize = true;
+            this.radioButtonCNAB240.Checked = true;
             this.radioButtonCNAB240.Location = new System.Drawing.Point(9, 19);
             this.radioButtonCNAB240.Name = "radioButtonCNAB240";
             this.radioButtonCNAB240.Size = new System.Drawing.Size(75, 17);
@@ -91,7 +96,7 @@
             // 
             this.groupBox1.Controls.Add(this.radioButtonCNAB240);
             this.groupBox1.Controls.Add(this.radioButtonCNAB400);
-            this.groupBox1.Location = new System.Drawing.Point(11, 34);
+            this.groupBox1.Location = new System.Drawing.Point(11, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(147, 40);
             this.groupBox1.TabIndex = 32;
@@ -101,12 +106,10 @@
             // radioButtonCNAB400
             // 
             this.radioButtonCNAB400.AutoSize = true;
-            this.radioButtonCNAB400.Checked = true;
             this.radioButtonCNAB400.Location = new System.Drawing.Point(72, 19);
             this.radioButtonCNAB400.Name = "radioButtonCNAB400";
             this.radioButtonCNAB400.Size = new System.Drawing.Size(75, 17);
             this.radioButtonCNAB400.TabIndex = 28;
-            this.radioButtonCNAB400.TabStop = true;
             this.radioButtonCNAB400.Tag = "409";
             this.radioButtonCNAB400.Text = "CNAB 400";
             this.radioButtonCNAB400.UseVisualStyleBackColor = true;
@@ -420,10 +423,10 @@
             this.groupBoxBancos.Controls.Add(this.radioButtonHsbc);
             this.groupBoxBancos.Controls.Add(this.radioButtonSafra);
             this.groupBoxBancos.Controls.Add(this.radioButtonItau);
-            this.groupBoxBancos.Location = new System.Drawing.Point(11, 112);
+            this.groupBoxBancos.Location = new System.Drawing.Point(11, 80);
             this.groupBoxBancos.Name = "groupBoxBancos";
             this.groupBoxBancos.Padding = new System.Windows.Forms.Padding(10, 5, 10, 10);
-            this.groupBoxBancos.Size = new System.Drawing.Size(58, 324);
+            this.groupBoxBancos.Size = new System.Drawing.Size(144, 324);
             this.groupBoxBancos.TabIndex = 31;
             this.groupBoxBancos.TabStop = false;
             this.groupBoxBancos.Text = "Bancos";
@@ -436,7 +439,7 @@
             this.btn_valor.Name = "btn_valor";
             this.btn_valor.Size = new System.Drawing.Size(169, 29);
             this.btn_valor.TabIndex = 67;
-            this.btn_valor.Text = "&Processar Safra";
+            this.btn_valor.Text = "&Processar retorno";
             this.btn_valor.UseVisualStyleBackColor = true;
             this.btn_valor.Click += new System.EventHandler(this.btn_valor_Click);
             // 
@@ -447,11 +450,47 @@
             this.barraProgresso.Size = new System.Drawing.Size(640, 19);
             this.barraProgresso.TabIndex = 68;
             // 
+            // groupBanco
+            // 
+            this.groupBanco.Controls.Add(this.rdbSafra);
+            this.groupBanco.Controls.Add(this.rdbSantander);
+            this.groupBanco.Location = new System.Drawing.Point(204, 30);
+            this.groupBanco.Name = "groupBanco";
+            this.groupBanco.Size = new System.Drawing.Size(147, 40);
+            this.groupBanco.TabIndex = 69;
+            this.groupBanco.TabStop = false;
+            this.groupBanco.Text = "Padrão";
+            // 
+            // rdbSafra
+            // 
+            this.rdbSafra.AutoSize = true;
+            this.rdbSafra.Checked = true;
+            this.rdbSafra.Location = new System.Drawing.Point(9, 19);
+            this.rdbSafra.Name = "rdbSafra";
+            this.rdbSafra.Size = new System.Drawing.Size(50, 17);
+            this.rdbSafra.TabIndex = 29;
+            this.rdbSafra.TabStop = true;
+            this.rdbSafra.Tag = "409";
+            this.rdbSafra.Text = "Safra";
+            this.rdbSafra.UseVisualStyleBackColor = true;
+            // 
+            // rdbSantander
+            // 
+            this.rdbSantander.AutoSize = true;
+            this.rdbSantander.Location = new System.Drawing.Point(72, 19);
+            this.rdbSantander.Name = "rdbSantander";
+            this.rdbSantander.Size = new System.Drawing.Size(74, 17);
+            this.rdbSantander.TabIndex = 28;
+            this.rdbSantander.Tag = "409";
+            this.rdbSantander.Text = "Santander";
+            this.rdbSantander.UseVisualStyleBackColor = true;
+            // 
             // BaixaSafra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 511);
+            this.Controls.Add(this.groupBanco);
             this.Controls.Add(this.barraProgresso);
             this.Controls.Add(this.btn_valor);
             this.Controls.Add(this.groupBox1);
@@ -466,6 +505,8 @@
             this.menuStrip.PerformLayout();
             this.groupBoxBancos.ResumeLayout(false);
             this.groupBoxBancos.PerformLayout();
+            this.groupBanco.ResumeLayout(false);
+            this.groupBanco.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,5 +552,8 @@
         private System.Windows.Forms.RadioButton radioButtonCNAB400;
         internal System.Windows.Forms.Button btn_valor;
         private System.Windows.Forms.ProgressBar barraProgresso;
+        private System.Windows.Forms.GroupBox groupBanco;
+        private System.Windows.Forms.RadioButton rdbSafra;
+        private System.Windows.Forms.RadioButton rdbSantander;
     }
 }
