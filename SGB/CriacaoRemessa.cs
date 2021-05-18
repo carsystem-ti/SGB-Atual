@@ -56,7 +56,7 @@ namespace geracaoRemessa.Formulario
             else
                 _empresa = CarSystem.Tipos.empresas.SatNet;
 
-            _nomeRemessa = CarSystem.Remessas.Remessa.formaNomeRemessa(dtInicioVencimento.Value, dtFimVencimentos.Value, Convert.ToInt32(_banco), Convert.ToInt32(_empresa));
+            _nomeRemessa = CarSystem.Remessas.Remessa.formaNomeRemessa(dtInicioVencimento.Value, dtFimVencimentos.Value,Convert.ToInt32(_banco) == 353 ? 033 : Convert.ToInt32(_banco), Convert.ToInt32(_empresa));
 
         }
 
