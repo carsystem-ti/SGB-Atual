@@ -431,6 +431,9 @@ namespace geracaoRemessa.Formulario
             }    
         }
 
-       
+        private void txt_pedido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -866,14 +866,14 @@ namespace BoletoNet.Arquivo
             }
         }
 
-        private int setBaixa(string pNossoNumero,float vl_pago,int id_baixa,int nr_banco)
+        private int setBaixa(string pNossoNumero,double vl_pago,int id_baixa,int nr_banco)
         {
-
+            
             dados.Comandos.limpaParametros();
             dados.Comandos.textoComando = "SGB.[Registro].[pro_BaixaTitulo_ArquivoRetorno]";
             dados.Comandos.tipoComando = CommandType.StoredProcedure;
             dados.Comandos.adicionaParametro("@nossoNumero", SqlDbType.VarChar, 12, pNossoNumero);
-            dados.Comandos.adicionaParametro("@valor", SqlDbType.VarChar, 12, vl_pago);
+            dados.Comandos.adicionaParametro("@valor", SqlDbType.Money, 12, vl_pago);
             dados.Comandos.adicionaParametro("@usuario", SqlDbType.VarChar, 12, Environment.UserName);
             dados.Comandos.adicionaParametro("@tipoBaixa", SqlDbType.VarChar, 12, "LQ Normal");
             dados.Comandos.adicionaParametro("@codigoArquivo", SqlDbType.VarChar, 12, id_baixa);
