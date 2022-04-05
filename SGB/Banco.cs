@@ -67,7 +67,7 @@ namespace SGB
 		#endregion
 
 		#region Métodos Privados
-
+		bool RemoveAcentosArquivoRemessa { get; }
 		private void InstanciaBanco(int codigoBanco)
 		{
 			try
@@ -93,100 +93,100 @@ namespace SGB
 					case 422:
 						_IBanco = new Banco_Safra();
 						break;
-						////237 - Bradesco
-						//case 237:
-						//	_IBanco = new Banco_Bradesco();
-						//	break;
-						////347 - Sudameris
-						//case 347:
-						//	_IBanco = new Banco_Sudameris();
-						//	break;
-						////353 - Santander
-						//case 353:
-						//	_IBanco = new Banco_Santander();
-						//	break;
-						////070 - BRB
-						//case 70:
-						//	_IBanco = new Banco_BRB();
-						//	break;
-						////479 - BankBoston
-						//case 479:
-						//	_IBanco = new Banco_BankBoston();
-						//	break;
-						////001 - Banco do Brasil
-						//case 1:
-						//	_IBanco = new Banco_Brasil();
-						//	break;
-						////399 - HSBC
-						//case 399:
-						//	_IBanco = new Banco_HSBC();
-						//	break;
-						////003 - HSBC
-						//case 3:
-						//	_IBanco = new Banco_Basa();
-						//	break;
-						////409 - Unibanco
-						//case 409:
-						//	_IBanco = new Banco_Unibanco();
-						//	break;
-						////33 - Unibanco
-						//case 33:
-						//	_IBanco = new Banco_Santander();
-						//	break;
-						////41 - Banrisul
-						//case 41:
-						//	_IBanco = new Banco_Banrisul();
-						//	break;
-						////756 - Sicoob (Bancoob)
-						//case 756:
-						//	_IBanco = new Banco_Sicoob();
-						//	break;
-						////748 - Sicredi
-						//case 748:
-						//	_IBanco = new Banco_Sicredi();
-						//	break;
-						////21 - Banestes
-						//case 21:
-						//	_IBanco = new Banco_Banestes();
-						//	break;
-						////97 - CrediSis
-						//case 97:
-						//	_IBanco = new Banco_CrediSis();
-						//	break;
-						////004 - Nordeste
-						//case 4:
-						//	_IBanco = new Banco_Nordeste();
-						//	break;
-						////85 - CECRED
-						//case 85:
-						//	_IBanco = new Banco_Cecred();
-						//	break;
-						////136 - Unicred
-						//case 136:
-						//	_IBanco = new Banco_Unicred();
-						//	break;
-						////655 - Votorantim
-						//case 655:
-						//	_IBanco = new Banco_Votorantim();
-						//	break;
-						//case 707:
-						//	_IBanco = new Banco_Daycoval();
-						//	break;
-						//case 637:
-						//	_IBanco = new Banco_Sofisa();
-						//	break;
-						//case 743:
-						//	_IBanco = new Banco_Semear();
-						//	break;
-						//case 084:
-						//	_IBanco = new Banco_Uniprime();
-						//	break;
-						//case ((int)Enums.Bancos.Maxima):
-						//	_IBanco = new Banco_Maxima();
-						//	break;
-						//default:
-						//	throw new Exception("Código do banco não implementando: " + codigoBanco);
-				}
+                    ////237 - Bradesco
+                    //case 237:
+                    //	_IBanco = new Banco_Bradesco();
+                    //	break;
+                    ////347 - Sudameris
+                    //case 347:
+                    //	_IBanco = new Banco_Sudameris();
+                    //	break;
+                    ////353 - Santander
+                    //case 353:
+                    //	_IBanco = new Banco_Santander();
+                    //	break;
+                    ////070 - BRB
+                    //case 70:
+                    //	_IBanco = new Banco_BRB();
+                    //	break;
+                    ////479 - BankBoston
+                    //case 479:
+                    //	_IBanco = new Banco_BankBoston();
+                    //	break;
+                    ////001 - Banco do Brasil
+                    //case 1:
+                    //	_IBanco = new Banco_Brasil();
+                    //	break;
+                    ////399 - HSBC
+                    //case 399:
+                    //	_IBanco = new Banco_HSBC();
+                    //	break;
+                    ////003 - HSBC
+                    //case 3:
+                    //	_IBanco = new Banco_Basa();
+                    //	break;
+                    ////409 - Unibanco
+                    //case 409:
+                    //	_IBanco = new Banco_Unibanco();
+                    //	break;
+                    ////33 - Unibanco
+                    //case 33:
+                    //	_IBanco = new Banco_Santander();
+                    //	break;
+                    ////41 - Banrisul
+                    //case 41:
+                    //	_IBanco = new Banco_Banrisul();
+                    //	break;
+                    ////756 - Sicoob (Bancoob)
+                    //case 756:
+                    //	_IBanco = new Banco_Sicoob();
+                    //	break;
+                    ////748 - Sicredi
+                    //case 748:
+                    //	_IBanco = new Banco_Sicredi();
+                    //	break;
+                    ////21 - Banestes
+                    //case 21:
+                    //	_IBanco = new Banco_Banestes();
+                    //	break;
+                    ////97 - CrediSis
+                    //case 97:
+                    //	_IBanco = new Banco_CrediSis();
+                    //	break;
+                    ////004 - Nordeste
+                    //case 4:
+                    //	_IBanco = new Banco_Nordeste();
+                    //	break;
+                    ////85 - CECRED
+                    //case 85:
+                    //	_IBanco = new Banco_Cecred();
+                    //	break;
+                    ////136 - Unicred
+                    //case 136:
+                    //	_IBanco = new Banco_Unicred();
+                    //	break;
+                    ////655 - Votorantim
+                    //case 655:
+                    //	_IBanco = new Banco_Votorantim();
+                    //	break;
+                    case 707:
+                        _IBanco = new Banco_Daycoval();
+                        break;
+                        //case 637:
+                        //	_IBanco = new Banco_Sofisa();
+                        //	break;
+                        //case 743:
+                        //	_IBanco = new Banco_Semear();
+                        //	break;
+                        //case 084:
+                        //	_IBanco = new Banco_Uniprime();
+                        //	break;
+                        //case ((int)Enums.Bancos.Maxima):
+                        //	_IBanco = new Banco_Maxima();
+                        //	break;
+                        //default:
+                        //	throw new Exception("Código do banco não implementando: " + codigoBanco);
+                }
 			}
 			catch (Exception ex)
 			{

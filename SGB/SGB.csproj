@@ -190,6 +190,7 @@
       <DependentUpon>BaixaSafra.cs</DependentUpon>
     </Compile>
     <Compile Include="Banco.cs" />
+    <Compile Include="Banco\Banco_Daycoval.cs" />
     <Compile Include="Banco\Banco_Safra.cs" />
     <Compile Include="BloqueioBoletos.cs">
       <SubType>Form</SubType>
@@ -340,6 +341,9 @@
     <EmbeddedResource Include="analiseRetorno.resx">
       <DependentUpon>analiseRetorno.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Remessa.resx">
+      <DependentUpon>Remessa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SolicitacoesSGB.resx">
       <DependentUpon>SolicitacoesSGB.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -380,6 +384,12 @@
     </Compile>
     <Compile Include="analiseRetorno.Designer.cs">
       <DependentUpon>analiseRetorno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Remessa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Remessa.Designer.cs">
+      <DependentUpon>Remessa.cs</DependentUpon>
     </Compile>
     <Compile Include="Service References\tmkService\Reference.cs">
       <AutoGen>True</AutoGen>
