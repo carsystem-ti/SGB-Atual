@@ -21,7 +21,10 @@ namespace SGB
                 Application.Run(new Menu());
             else
                 // Application.Run(CarSystem.Login.Login.telaLogin(new Menu(), true, false, app.GetName().Name)); 
-                Application.Run(new Remessa());
+              
+            
+            
+              Application.Run(new Remessa());
             //Application.Run(new geraBoletos.OperBoletos ());
             //Application.Run(CarSystem.Login.Login.telaLogin(new menu(), true, false, app.GetName().Name)); 
 

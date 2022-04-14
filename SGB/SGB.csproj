@@ -189,9 +189,23 @@
     <Compile Include="BaixaSafra.Designer.cs">
       <DependentUpon>BaixaSafra.cs</DependentUpon>
     </Compile>
-    <Compile Include="Banco.cs" />
+    <Compile Include="Bancos.cs" />
     <Compile Include="Banco\Banco_Daycoval.cs" />
     <Compile Include="Banco\Banco_Safra.cs" />
+    <Compile Include="Banco\Daycoval\BancoDaycoval.cs" />
+    <Compile Include="Banco\Daycoval\BancoFactory.cs" />
+    <Compile Include="Banco\Daycoval\Daycoval.cs" />
+    <Compile Include="Banco\Daycoval\LeitorRetornoCnab400Daycoval.cs" />
+    <Compile Include="Banco\Daycoval\retorno\400\ArquivoRetornoCNAB400.cs" />
+    <Compile Include="Banco\Daycoval\retorno\400\DetalheRateioRetornoCnab400.cs" />
+    <Compile Include="Banco\Daycoval\retorno\400\DetalheRetornoCnab400.cs" />
+    <Compile Include="Banco\Daycoval\retorno\400\HeaderRetornoCnab400.cs" />
+    <Compile Include="Banco\Daycoval\retorno\400\RetornoCnab400.cs" />
+    <Compile Include="Banco\Daycoval\retorno\400\TrailerRetornoCnab400.cs" />
+    <Compile Include="Banco\Daycoval\retorno\Generico\RetornoDetalheGenerico.cs" />
+    <Compile Include="Banco\Daycoval\retorno\Generico\RetornoGenerico.cs" />
+    <Compile Include="Banco\Daycoval\retorno\Generico\RetornoHeaderGenerico.cs" />
+    <Compile Include="Banco\Daycoval\retorno\Generico\RetornoTrailerGenerico.cs" />
     <Compile Include="BloqueioBoletos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +218,8 @@
     <Compile Include="Boletos.designer.cs">
       <DependentUpon>Boletos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\MetodosExtensao.cs" />
     <Compile Include="CSTech.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +238,30 @@
     <Compile Include="CriacaoRemessa.designer.cs">
       <DependentUpon>CriacaoRemessa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dominio\Boleto.cs" />
+    <Compile Include="Dominio\CarteiraCobranca.cs" />
+    <Compile Include="Dominio\Cedente.cs" />
+    <Compile Include="Dominio\CodigoOcorrencia.cs" />
+    <Compile Include="Dominio\ContaBancaria.cs" />
+    <Compile Include="Dominio\Endereco.cs" />
+    <Compile Include="Dominio\EspecieDocumento.cs" />
+    <Compile Include="Dominio\InformacoesAdicionais.cs" />
+    <Compile Include="Dominio\Sacado.cs" />
+    <Compile Include="Enums\CategoriaLancamento.cs" />
+    <Compile Include="Enums\CodigoJurosMora.cs" />
+    <Compile Include="Enums\CodigoOcorrenciaRemessa.cs" />
+    <Compile Include="Enums\CodigoOcorrenciaRetorno.cs" />
+    <Compile Include="Enums\EspecieDocumento.cs" />
+    <Compile Include="Enums\IsencaoCpmf.cs" />
+    <Compile Include="Enums\TipoArquivo.cs" />
+    <Compile Include="Enums\TipoCobrancaJuro.cs" />
+    <Compile Include="Enums\TipoComplementoLancamento.cs" />
+    <Compile Include="Enums\TipoInscricao.cs" />
+    <Compile Include="Enums\TipoInstrucao.cs" />
+    <Compile Include="Enums\TipoLancamento.cs" />
+    <Compile Include="Enums\TipoMovimentoArquivo.cs" />
+    <Compile Include="Enums\TipoPessoa.cs" />
+    <Compile Include="Exceptions\ValidacaoBoletoException.cs" />
     <Compile Include="Fury.cs" />
     <Compile Include="GeracaoBoletos.cs">
       <SubType>Form</SubType>
@@ -247,6 +287,12 @@
     <Compile Include="InformacoesRemessas.designer.cs">
       <DependentUpon>InformacoesRemessas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IArquivoRetorno.cs" />
+    <Compile Include="Interfaces\IBanco.cs" />
+    <Compile Include="Interfaces\ICodigoOcorrencia.cs" />
+    <Compile Include="Interfaces\IEspecieDocumento.cs" />
+    <Compile Include="Interfaces\IInstrucao.cs" />
+    <Compile Include="Interfaces\ILeitorArquivoRetornoCnab400.cs" />
     <Compile Include="menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -511,8 +557,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Arquivo\" />
+    <Folder Include="Arquivo\CNAB400\" />
     <Folder Include="Banco\Carteiras\Brasil\" />
+    <Folder Include="Remessa\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

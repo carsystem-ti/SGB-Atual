@@ -105,12 +105,11 @@ namespace SGB
 		}
 		private void GerarHeaderRemessaCNABNew(long convenio)
 		{
-			int contador = 0;
 			int nr_registro = 0;
 			int sequencia = 0;
 
 			Boleto boleto = new Boleto();
-			string nomeArquivo = "7GY" + DateTime.Now.ToString("ddMM").ToString() + "1.txt";
+			string nomeArquivo = "7GY" + DateTime.Now.ToString("ddMM").ToString() + "1.TXT.txt";
 			Stream arquivo = File.OpenWrite(@"C:\\TEMP\" + nomeArquivo.ToString()); // @"C:\Temp\Mahesh.txt";
 			StreamWriter gravaLinha = new StreamWriter(arquivo);
 		
@@ -132,7 +131,7 @@ namespace SGB
 			header.Append(Utils.FitStringLength("COBRANCA", 15, 15, ' ', 0, true, true, false));
 			
 			//Indentificação da empresa 27 á 46
-			header.Append(Utils.FitStringLength(convenio.ToString(), 12, 12, ' ', 0, true, true, false));
+			header.Append(Utils.FitStringLength(convenio.ToString(), 20 ,20, ' ', 0, true, true, false));
 
 			//Nome da empresa 47 á 76
 			header.Append(Utils.FitStringLength(this.c.Nome, 30, 30, ' ', 0, true, true, false)); // Nome do cedente
@@ -157,7 +156,7 @@ namespace SGB
 			gravaLinha.WriteLine(headerFormatado);
 
 			DataSet ds = getBoletos();
-			nr_registro = 84580106;
+			nr_registro = 16756001;
 			///sageBox.Show("Quantidade de Boletos a ser processado : " + ds.Tables.Count.ToString() + " !!!");
 			
 			foreach (DataRow dr in ds.Tables[0].Rows)
@@ -210,7 +209,7 @@ namespace SGB
 				if (this._banco == null)
 				{
 					
-					this._banco = new Banco(707);
+					this._banco = new Bancos(707);
 					this._banco.Codigo = 707;
 				}
 
@@ -245,7 +244,7 @@ namespace SGB
 				detalhe.Append("0"); // DAC da agência cobradora
 				
 				//Especie 148 á 149
-				detalhe.Append(Utils.FitStringLength("01", 2, 2, '0', 0, true, true, true));
+				detalhe.Append(Utils.FitStringLength("12", 2, 2, '0', 0, true, true, true));
 				
 				//Aceite 150 á 150
 				detalhe.Append("N"); // Indicação de aceite do título, sempre N
@@ -262,7 +261,7 @@ namespace SGB
 
 				//Data desconto 174 á 179	
 				boleto.DataDesconto = Convert.ToDateTime(dr.ItemArray[3].ToString());
-				detalhe.Append(boleto.DataDesconto == DateTime.MinValue ? "000000" : boleto.DataDesconto.ToString("ddMMyy"));
+				detalhe.Append("000000");
 
 				//Valor Desconto 180 á 192
 				boleto.ValorDesconto = 0;
@@ -321,15 +320,15 @@ namespace SGB
 				detalhe.Append(Utils.FitStringLength(dr.ItemArray[12].ToString(), 2, 2, ' ', 0, true, true, false));
 				
 				//AVALISTA 352 Á 381 
-				if (boleto.Avalista != null)
-				{
+				//if (boleto.Avalista != null)
+				//{
 					//boleto.Avalista.Nome = dr.ItemArray[1].ToString();
-					detalhe.Append(Utils.FitStringLength(dr.ItemArray[1].ToString(), 30, 30, ' ', 0, true, true, false));
-				}
-				else
-				{
-					detalhe.Append(Utils.FitStringLength(string.Empty, 30, 30, ' ', 0, true, true, false));
-				}
+					detalhe.Append(Utils.FitStringLength("CAR SYSTEM ALARMES LTDA", 30, 30, ' ', 0, true, true, false));
+				//}
+				//else
+				//{
+					//detalhe.Append(Utils.FitStringLength("CAR SYSTEM ALARMES LTDA", 30, 30, ' ', 0, true, true, false));
+				//}
 
 				//BRANCOS 382 Á 385
 				detalhe.Append(Utils.FitStringLength(string.Empty, 4, 4, ' ', 0, true, true, false)); // Brancos
@@ -357,34 +356,34 @@ namespace SGB
 				{
 					gravaLinha.WriteLine(detalheFormatado);
 
-					var registro = new StringBuilder();
+					//var registro = new StringBuilder();
 
-					//Identificacao Posicao 1 á 1 
-					registro.Append("4");
+					////Identificacao Posicao 1 á 1 
+					//registro.Append("4");
 
-					//Número da Nota Fiscal 2 á 16 
-					registro.Append(Utils.FitStringLength("0", 15, 15, '0', 0, true, true, true));
+					////Número da Nota Fiscal 2 á 16 
+					//registro.Append(Utils.FitStringLength("0", 15, 15, '0', 0, true, true, true));
 					
-					//Valor da Nota Fiscal 17 á 29 
-					registro.Append(Utils.FitStringLength(boleto.ValorBoleto.ApenasNumeros(), 13, 13, '0', 0, true, true, true));
+					////Valor da Nota Fiscal 17 á 29 
+					//registro.Append(Utils.FitStringLength(boleto.ValorBoleto.ApenasNumeros(), 13, 13, '0', 0, true, true, true));
 
-					//Data de Emissão da Nota 30 á 37 
-					//registro.Append(boleto.DataDocumento.ToString("ddMMyyyy"));
-					registro.Append(Utils.FitStringLength(boleto.DataDocumento.ToString("ddMMyyyy"), 8, 8, '0', 0, true, true, true));
+					////Data de Emissão da Nota 30 á 37 
+					////registro.Append(boleto.DataDocumento.ToString("ddMMyyyy"));
+					//registro.Append(Utils.FitStringLength(boleto.DataDocumento.ToString("ddMMyyyy"), 8, 8, '0', 0, true, true, true));
 
 
-					//Chave de Acesso DANFE  da Nota 38 á 81 
-					registro.Append(Utils.FitStringLength("0", 44, 44, '0', 0, true, true, true));
+					////Chave de Acesso DANFE  da Nota 38 á 81 
+					//registro.Append(Utils.FitStringLength("0", 44, 44, '0', 0, true, true, true));
 
-					//Complemento do registro 82 á 394 
-					registro.Append(Utils.FitStringLength(string.Empty, 313, 313, ' ', 0, true, true, false));
+					////Complemento do registro 82 á 394 
+					//registro.Append(Utils.FitStringLength(string.Empty, 313, 313, ' ', 0, true, true, false));
 					
-					//Número sequencial do registro 82 á 394 
-					registro.Append(Utils.FitStringLength(sequencia.ToString(), 6, 6, '0', 0, true, true, true));
+					////Número sequencial do registro 82 á 394 
+					//registro.Append(Utils.FitStringLength(sequencia.ToString(), 6, 6, '0', 0, true, true, true));
 					
-					// do registro no arquivo.
-					var registroFormatado = Utils.SubstituiCaracteresEspeciais(registro.ToString());
-					gravaLinha.WriteLine(registroFormatado);
+					//// do registro no arquivo.
+					//var registroFormatado = Utils.SubstituiCaracteresEspeciais(registro.ToString());
+					//gravaLinha.WriteLine(registroFormatado);
 
 
 
@@ -406,7 +405,7 @@ namespace SGB
 			gravaLinha.WriteLine(trailerFormatado);
 
 			lbl_selecionados.Text = sequencia.ToString();
-			MessageBox.Show(sequencia.ToString());
+			MessageBox.Show("Arquivo gerado com sucesso,foram processados: " + sequencia.ToString());
 			gravaLinha.Close();
 		}
 		public void GeraArquivoCNAB400()

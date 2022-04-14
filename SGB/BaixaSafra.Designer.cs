@@ -67,6 +67,7 @@
             this.btn_valor = new System.Windows.Forms.Button();
             this.barraProgresso = new System.Windows.Forms.ProgressBar();
             this.groupBanco = new System.Windows.Forms.GroupBox();
+            this.rdbDaycoval = new System.Windows.Forms.RadioButton();
             this.rdbSafra = new System.Windows.Forms.RadioButton();
             this.rdbSantander = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
@@ -98,7 +99,7 @@
             this.groupBox1.Controls.Add(this.radioButtonCNAB400);
             this.groupBox1.Location = new System.Drawing.Point(11, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(147, 40);
+            this.groupBox1.Size = new System.Drawing.Size(237, 40);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Padrão";
@@ -106,14 +107,13 @@
             // radioButtonCNAB400
             // 
             this.radioButtonCNAB400.AutoSize = true;
-            this.radioButtonCNAB400.Location = new System.Drawing.Point(72, 19);
+            this.radioButtonCNAB400.Location = new System.Drawing.Point(156, 17);
             this.radioButtonCNAB400.Name = "radioButtonCNAB400";
             this.radioButtonCNAB400.Size = new System.Drawing.Size(75, 17);
             this.radioButtonCNAB400.TabIndex = 28;
             this.radioButtonCNAB400.Tag = "409";
             this.radioButtonCNAB400.Text = "CNAB 400";
             this.radioButtonCNAB400.UseVisualStyleBackColor = true;
-            this.radioButtonCNAB400.Visible = false;
             // 
             // impressãoToolStripMenuItem
             // 
@@ -315,12 +315,11 @@
             this.radioButtonBancoBrasil.AutoSize = true;
             this.radioButtonBancoBrasil.Location = new System.Drawing.Point(13, 44);
             this.radioButtonBancoBrasil.Name = "radioButtonBancoBrasil";
-            this.radioButtonBancoBrasil.Size = new System.Drawing.Size(99, 17);
+            this.radioButtonBancoBrasil.Size = new System.Drawing.Size(70, 17);
             this.radioButtonBancoBrasil.TabIndex = 25;
             this.radioButtonBancoBrasil.Tag = "1";
-            this.radioButtonBancoBrasil.Text = "Banco do Brasil";
+            this.radioButtonBancoBrasil.Text = "Daycoval";
             this.radioButtonBancoBrasil.UseVisualStyleBackColor = true;
-            this.radioButtonBancoBrasil.Visible = false;
             // 
             // radioButtonSudameris
             // 
@@ -452,20 +451,32 @@
             // 
             // groupBanco
             // 
+            this.groupBanco.Controls.Add(this.rdbDaycoval);
             this.groupBanco.Controls.Add(this.rdbSafra);
             this.groupBanco.Controls.Add(this.rdbSantander);
-            this.groupBanco.Location = new System.Drawing.Point(204, 30);
+            this.groupBanco.Location = new System.Drawing.Point(268, 30);
             this.groupBanco.Name = "groupBanco";
-            this.groupBanco.Size = new System.Drawing.Size(147, 40);
+            this.groupBanco.Size = new System.Drawing.Size(322, 40);
             this.groupBanco.TabIndex = 69;
             this.groupBanco.TabStop = false;
             this.groupBanco.Text = "Padrão";
+            // 
+            // rdbDaycoval
+            // 
+            this.rdbDaycoval.AutoSize = true;
+            this.rdbDaycoval.Location = new System.Drawing.Point(238, 17);
+            this.rdbDaycoval.Name = "rdbDaycoval";
+            this.rdbDaycoval.Size = new System.Drawing.Size(70, 17);
+            this.rdbDaycoval.TabIndex = 30;
+            this.rdbDaycoval.Tag = "409";
+            this.rdbDaycoval.Text = "Daycoval";
+            this.rdbDaycoval.UseVisualStyleBackColor = true;
             // 
             // rdbSafra
             // 
             this.rdbSafra.AutoSize = true;
             this.rdbSafra.Checked = true;
-            this.rdbSafra.Location = new System.Drawing.Point(9, 19);
+            this.rdbSafra.Location = new System.Drawing.Point(40, 17);
             this.rdbSafra.Name = "rdbSafra";
             this.rdbSafra.Size = new System.Drawing.Size(50, 17);
             this.rdbSafra.TabIndex = 29;
@@ -477,7 +488,7 @@
             // rdbSantander
             // 
             this.rdbSantander.AutoSize = true;
-            this.rdbSantander.Location = new System.Drawing.Point(72, 19);
+            this.rdbSantander.Location = new System.Drawing.Point(124, 17);
             this.rdbSantander.Name = "rdbSantander";
             this.rdbSantander.Size = new System.Drawing.Size(74, 17);
             this.rdbSantander.TabIndex = 28;
@@ -555,5 +566,6 @@
         private System.Windows.Forms.GroupBox groupBanco;
         private System.Windows.Forms.RadioButton rdbSafra;
         private System.Windows.Forms.RadioButton rdbSantander;
+        private System.Windows.Forms.RadioButton rdbDaycoval;
     }
 }

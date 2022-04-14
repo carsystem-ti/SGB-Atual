@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SGB
 {
-	public class Banco : IBanco
+	public class Bancos : IBanco
 	{
 		#region Variaveis
 
@@ -17,11 +17,11 @@ namespace SGB
 
 		#region Construtores
 
-		internal Banco()
+		internal Bancos()
 		{
 		}
 
-		public Banco(int CodigoBanco)
+		public Bancos(int CodigoBanco)
 		{
 			try
 			{

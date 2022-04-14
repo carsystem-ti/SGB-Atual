@@ -13,28 +13,38 @@ using System.Web.UI;
 namespace BoletoNet
 {
 	using System;
-	using System.IO;
+    using System.Drawing;
+    using System.IO;
 	using System.Text;
 
 	using global::BoletoNet.Excecoes;
 	using global::BoletoNet.Util;
     using SGB;
 
-    internal class Banco_Daycoval : AbstractBanco, IBanco
+    public class Banco_Daycoval : AbstractBanco, IBanco
 	{
 		#region Fields
 
 		private IBanco _banco;
+		public string CodigoBanco { get; set; }
+		public string DigitoBanco { get; set; }
+		public string NomeBanco { get; set; }
+		public Image LogotipoBancoParaExibicao { get; set; }
+		public string LocalDePagamento { get; }
+		public string MoedaBanco { get; }
 
+	
 		#endregion
 
 		#region Constructors and Destructors
 
-		internal Banco_Daycoval()
+		public  Banco_Daycoval()
 		{
-			this.Codigo = 707;
-			this.Digito = "0";
-			this.Nome = "Daycoval";
+			CodigoBanco = "707";
+			DigitoBanco = "2";
+			NomeBanco = "Banco Daycoval";
+			LocalDePagamento = "Pagável em qualquer banco até o vencimento.";
+			MoedaBanco = "9";
 		}
 
 		#endregion

@@ -7,9 +7,10 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
-
+using BoletoBr.Bancos.Daycoval;
 using BoletoNet;
 using CarSystem.BancoDados;
+using BoletoBr;
 
 namespace BoletoNet.Arquivo
 {
@@ -19,6 +20,7 @@ namespace BoletoNet.Arquivo
         CarSystem.BancoDados.Dados _dados;
         private string _arquivo=null;
         private int _id_retorno = 0;
+
         public CarSystem.BancoDados.Dados dados
         {
             get
@@ -598,6 +600,112 @@ namespace BoletoNet.Arquivo
                 MessageBox.Show(ex.Message, "Erro ao abrir arquivo de retorno.");
             }
         }
+       
+        #region Retorno
+        private void LerRetorno400(int codigo)
+        {
+            try
+            {
+                Banco bco = new Banco(codigo);
+                String linhaAtual;
+                var objRetornar = new RetornoCnab400 { RegistrosDetalhe = new List<DetalheRetornoCnab400>() };
+                openFileDialog.FileName = "";
+                openFileDialog.Title = "Selecione um arquivo de retorno";
+                openFileDialog.Filter = "Arquivos de Retorno (*.ret;*.crt;*.txt)|*.ret;*.crt|Todos Arquivos (*.*)|*.*";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    if (radioButtonCNAB400.Checked)
+                    {
+                        LeitorRetornoCnab400Daycoval leitor = new LeitorRetornoCnab400Daycoval(null);
+                        ArquivoRetornoCNAB400 cnab400 = null;
+                        if (openFileDialog.CheckFileExists == true)
+                        {
+                            cnab400 = new ArquivoRetornoCNAB400();
+                        
+                            cnab400.LinhaDeArquivoLida += new EventHandler<LinhaDeArquivoLidaArgs>(cnab400_LinhaDeArquivoLida);
+                           // cnab400.LerArquivoRetorno(bco, openFileDialog.OpenFile());
+                            using (StreamReader sr = new StreamReader(openFileDialog.OpenFile()))
+                            {
+                               
+                                // Lê linha por linha até o final do arquivo
+                                while ((linhaAtual = sr.ReadLine()) != null)
+                                {
+                                    Console.WriteLine(linhaAtual);
+                                    if (linhaAtual.ExtrairValorDaLinha(1, 1) == "0")
+                                        objRetornar.Header = leitor.ObterHeader(linhaAtual);
+                                    if (linhaAtual.ExtrairValorDaLinha(1, 1) == "1")
+                                        objRetornar.RegistrosDetalhe.Add(leitor.ObterRegistrosDetalhe(linhaAtual));
+                                    if (linhaAtual.ExtrairValorDaLinha(1, 1) == "9")
+                                        objRetornar.Trailer = leitor.ObterTrailer(linhaAtual);
+                                }
+                            }
+
+                        }
+
+                        lstReturnFields.Items.Clear();
+
+                        foreach (DetalheRetornoCnab400 detalhe in objRetornar.RegistrosDetalhe)
+                        {
+                            ListViewItem li = new ListViewItem(detalhe.NomeSacado);
+                            li.Tag = detalhe;
+
+                            li.SubItems.Add(detalhe.DataDaOcorrencia.ToString("dd/MM/yy"));
+                            li.SubItems.Add(detalhe.DataDaOcorrencia.ToString("dd/MM/yy"));
+
+                            li.SubItems.Add(detalhe.ValorDoTituloParcela.ToString("###,###.00"));
+
+                            li.SubItems.Add(detalhe.ValorDoTituloParcela.ToString("###,###.00"));
+                            li.SubItems.Add(detalhe.NumeroDocumento.ToString());
+                            li.SubItems.Add("");
+                            li.SubItems.Add(detalhe.SeuNumero); // = detalhe.NossoNumero.ToString() + "-" + detalhe.DACNossoNumero.ToString());
+                            li.SubItems.Add(detalhe.NumeroDocumento);
+                            lstReturnFields.Items.Add(li);
+                        }
+                    }
+                    else if (radioButtonCNAB240.Checked)
+                    {
+                        ArquivoRetornoCNAB240 cnab240 = null;
+                        if (openFileDialog.CheckFileExists == true)
+                        {
+                            cnab240 = new ArquivoRetornoCNAB240();
+                            cnab240.LinhaDeArquivoLida += new EventHandler<LinhaDeArquivoLidaArgs>(cnab240_LinhaDeArquivoLida);
+                            cnab240.LerArquivoRetorno(bco, openFileDialog.OpenFile());
+                        }
+
+                        if (cnab240 == null)
+                        {
+                            MessageBox.Show("Arquivo não processado!");
+                            return;
+                        }
+
+
+                        lstReturnFields.Items.Clear();
+
+                        foreach (DetalheRetornoCNAB240 detalhe in cnab240.ListaDetalhes)
+                        {
+                            ListViewItem li = new ListViewItem(detalhe.SegmentoT.NomeSacado.Trim());
+                            li.Tag = detalhe;
+
+                            li.SubItems.Add(detalhe.SegmentoT.DataVencimento.ToString("dd/MM/yy"));
+                            li.SubItems.Add(detalhe.SegmentoU.DataCredito.ToString("dd/MM/yy"));
+                            li.SubItems.Add(detalhe.SegmentoT.ValorTitulo.ToString("###,###.00"));
+                            li.SubItems.Add(detalhe.SegmentoU.ValorPagoPeloSacado.ToString("###,###.00"));
+                            li.SubItems.Add(detalhe.SegmentoU.CodigoOcorrenciaSacado.ToString());
+                            li.SubItems.Add("");
+                            li.SubItems.Add(detalhe.SegmentoT.NossoNumero);
+                            lstReturnFields.Items.Add(li);
+                        }
+                    }
+                    MessageBox.Show("Arquivo aberto com sucesso!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao abrir arquivo de retorno.");
+            }
+        }
+        #endregion Retorno
         private string getStatusParcela(string pNossoNumero)
         {
 
@@ -814,6 +922,8 @@ namespace BoletoNet.Arquivo
                 MessageBox.Show("Arquivo gerado com sucesso!", "Teste", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        
+
 
         private void lerToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
@@ -822,8 +932,8 @@ namespace BoletoNet.Arquivo
                 LerRetorno(422);
             else if (rdbSantander.Checked)
                 LerRetorno(33);
-            //else if (radioButtonSantander.Checked)
-            //    LerRetorno(33);
+            else if (rdbDaycoval.Checked)
+                LerRetorno400(707);
             //else if (radioButtonReal.Checked)
             //    LerRetorno(356);
             //else if (radioButtonCaixa.Checked)
