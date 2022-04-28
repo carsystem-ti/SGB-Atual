@@ -41,6 +41,7 @@
             this.cmdDA = new System.Windows.Forms.Button();
             this.cmdSair = new System.Windows.Forms.Button();
             this.cmdRetornoBradesco = new System.Windows.Forms.Button();
+            this.btnDaycoval = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -197,12 +198,26 @@
             this.cmdRetornoBradesco.UseVisualStyleBackColor = false;
             this.cmdRetornoBradesco.Click += new System.EventHandler(this.cmdRetornoBradesco_Click);
             // 
+            // btnDaycoval
+            // 
+            this.btnDaycoval.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDaycoval.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDaycoval.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnDaycoval.Location = new System.Drawing.Point(30, 325);
+            this.btnDaycoval.Name = "btnDaycoval";
+            this.btnDaycoval.Size = new System.Drawing.Size(200, 33);
+            this.btnDaycoval.TabIndex = 3;
+            this.btnDaycoval.Text = "Remessa Daycoval";
+            this.btnDaycoval.UseVisualStyleBackColor = false;
+            this.btnDaycoval.Click += new System.EventHandler(this.btnDaycoval_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(466, 380);
+            this.Controls.Add(this.btnDaycoval);
             this.Controls.Add(this.btnSafra);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmdOperBoletos);
@@ -241,5 +256,6 @@
         private System.Windows.Forms.Button cmdSair;
         private System.Windows.Forms.Button cmdRetornoBradesco;
         private System.Windows.Forms.Button btnSafra;
+        private System.Windows.Forms.Button btnDaycoval;
     }
 }

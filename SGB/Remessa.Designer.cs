@@ -36,18 +36,6 @@ namespace SGB
             Label14 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // lbl_titulo
-            // 
-            this.lbl_titulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lbl_titulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_titulo.Font = new System.Drawing.Font("Verdana", 13.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_titulo.Location = new System.Drawing.Point(2, 9);
-            this.lbl_titulo.Name = "lbl_titulo";
-            this.lbl_titulo.Size = new System.Drawing.Size(503, 36);
-            this.lbl_titulo.TabIndex = 47;
-            this.lbl_titulo.Text = "Remessa Daycoval";
-            this.lbl_titulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Label14
             // 
             Label14.BackColor = System.Drawing.Color.Red;
@@ -60,6 +48,18 @@ namespace SGB
             Label14.TabIndex = 48;
             Label14.Text = "Quantidade de boletos processados";
             Label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_titulo
+            // 
+            this.lbl_titulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lbl_titulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_titulo.Font = new System.Drawing.Font("Verdana", 13.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_titulo.Location = new System.Drawing.Point(2, 9);
+            this.lbl_titulo.Name = "lbl_titulo";
+            this.lbl_titulo.Size = new System.Drawing.Size(503, 36);
+            this.lbl_titulo.TabIndex = 47;
+            this.lbl_titulo.Text = "Remessa Daycoval";
+            this.lbl_titulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_selecionados
             // 
@@ -95,6 +95,9 @@ namespace SGB
             this.Controls.Add(Label14);
             this.Controls.Add(this.lbl_selecionados);
             this.Controls.Add(this.lbl_titulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Remessa";
             this.Text = "Remessa";
             this.ResumeLayout(false);

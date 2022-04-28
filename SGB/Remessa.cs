@@ -61,6 +61,63 @@ namespace SGB
 
 			return ds;
 		}
+		private DataSet getNomeArquivo()
+		{
+			DataSet ds = new DataSet();
+			dados.Comandos.limpaParametros();
+			dados.Comandos.textoComando = "SGB.[Remessa].[pro_getLoteDaycoval]";
+			dados.Comandos.tipoComando = CommandType.StoredProcedure;
+			dados.retornaDados = true;
+			ds = dados.execute();
+
+			return ds;
+		}
+		private int  getRangeDaycoval()
+		{
+			DataSet ds = new DataSet();
+			dados.Comandos.limpaParametros();
+			dados.Comandos.textoComando = "SGB.[Remessa].[pro_getLiberaRangeDaycoval]";
+			dados.Comandos.tipoComando = CommandType.StoredProcedure;
+			dados.Comandos.adicionaParametro("@tp", SqlDbType.Int, 12, 1);
+			dados.retornaDados = true;
+			ds = dados.execute();
+			if(ds.Tables.Count > 0)
+            {
+				return Convert.ToInt32(ds.Tables[0].Rows[0]["nr_range"].ToString());
+			}
+			else
+            {
+				return 0;
+            }
+			
+		}
+		private void setNextRangeDaycoval(string id_parcela,string range,string arquivo,int id_remessa)
+		{
+
+			dados.Comandos.limpaParametros();
+			dados.Comandos.textoComando = "SGB.[Remessa].[pro_getLiberaRangeDaycoval]";
+			dados.Comandos.tipoComando = CommandType.StoredProcedure;
+			dados.Comandos.adicionaParametro("@tp", SqlDbType.Int, 4, 2);
+			dados.Comandos.adicionaParametro("@id_parcela", SqlDbType.Int, 30, id_parcela);
+			dados.Comandos.adicionaParametro("@id_range", SqlDbType.VarChar, 80, range);
+			//dados.Comandos.adicionaParametro("@ds_arquivo", SqlDbType.VarChar, 120, arquivo);
+			dados.Comandos.adicionaParametro("@id_remessa", SqlDbType.Int, 30, id_remessa);
+
+
+			dados.retornaDados = true;
+			dados.execute();
+		}
+		private void CriaLoteDaycoval()
+		{
+
+			dados.Comandos.limpaParametros();
+			dados.Comandos.textoComando = "SGB.[Remessa].[pro_setCriaLoteArquivoRemessaDaycoval]";
+			dados.Comandos.tipoComando = CommandType.StoredProcedure;
+		
+
+			dados.retornaDados = true;
+			dados.execute();
+		}
 		private void btnGerar_Click(object sender, EventArgs e)
         {
             c.Codigo = "050121";
@@ -107,9 +164,14 @@ namespace SGB
 		{
 			int nr_registro = 0;
 			int sequencia = 0;
-
+			int id_remessa = 0;
 			Boleto boleto = new Boleto();
-			string nomeArquivo = "7GY" + DateTime.Now.ToString("ddMM").ToString() + "1.TXT.txt";
+			CriaLoteDaycoval();
+			DataSet dsArquivo = getNomeArquivo();
+
+			string nomeArquivo = dsArquivo.Tables[0].Rows[0]["ds_remessa"].ToString() + dsArquivo.Tables[0].Rows[0]["sequencia"].ToString() + ".TXT.txt";
+			id_remessa = Convert.ToInt32(dsArquivo.Tables[0].Rows[0]["id_remessa"].ToString());
+			//"7GY" + DateTime.Now.ToString("ddMM").ToString() + "1.TXT.txt";
 			Stream arquivo = File.OpenWrite(@"C:\\TEMP\" + nomeArquivo.ToString()); // @"C:\Temp\Mahesh.txt";
 			StreamWriter gravaLinha = new StreamWriter(arquivo);
 		
@@ -156,15 +218,18 @@ namespace SGB
 			gravaLinha.WriteLine(headerFormatado);
 
 			DataSet ds = getBoletos();
-			nr_registro = 16756001;
+			nr_registro = 0;
 			///sageBox.Show("Quantidade de Boletos a ser processado : " + ds.Tables.Count.ToString() + " !!!");
-			
+			sequencia = 1;
 			foreach (DataRow dr in ds.Tables[0].Rows)
             {
-				sequencia = sequencia + 1;
+				
+				
+				///sequencia = sequencia + 1;
 				var detalhe = new StringBuilder();
 
-			
+				nr_registro = getRangeDaycoval();
+
 				Cedente c = new Cedente();
 				//c.CPFCNPJ = "04.401.579/0001-55";
 				//c.Nome = "Carsystem Alarmes Ltda";
@@ -342,10 +407,11 @@ namespace SGB
 				
 				//MOEDA 394 Á 394
 				detalhe.Append(boleto.Moeda == 9 ? 0 : 2);
-				
-				//numero registro 394 Á 394
-				detalhe.Append(Utils.FitStringLength(sequencia.ToString(), 6, 6, '0', 0, true, true, true));
 
+				//numero registro 394 Á 394
+				sequencia = sequencia + 1;
+				detalhe.Append(Utils.FitStringLength(sequencia.ToString(), 6, 6, '0', 0, true, true, true));
+				
 				var detalheFormatado = detalhe.ToString();
 
 				if (detalheFormatado.Length != 400)
@@ -363,7 +429,7 @@ namespace SGB
 
 					////Número da Nota Fiscal 2 á 16 
 					//registro.Append(Utils.FitStringLength("0", 15, 15, '0', 0, true, true, true));
-					
+
 					////Valor da Nota Fiscal 17 á 29 
 					//registro.Append(Utils.FitStringLength(boleto.ValorBoleto.ApenasNumeros(), 13, 13, '0', 0, true, true, true));
 
@@ -377,17 +443,18 @@ namespace SGB
 
 					////Complemento do registro 82 á 394 
 					//registro.Append(Utils.FitStringLength(string.Empty, 313, 313, ' ', 0, true, true, false));
-					
+
 					////Número sequencial do registro 82 á 394 
 					//registro.Append(Utils.FitStringLength(sequencia.ToString(), 6, 6, '0', 0, true, true, true));
-					
+
 					//// do registro no arquivo.
 					//var registroFormatado = Utils.SubstituiCaracteresEspeciais(registro.ToString());
 					//gravaLinha.WriteLine(registroFormatado);
 
 
 
-					nr_registro = nr_registro + 1;
+					//nr_registro = nr_registro + 1;
+					setNextRangeDaycoval(boleto.NumeroDocumento, boleto.NossoNumero, nomeArquivo,id_remessa);
 				}
 
 
@@ -398,6 +465,7 @@ namespace SGB
 
 			trailer.Append("9");
 			trailer.Append(complemento);
+			sequencia = sequencia + 1;
 			trailer.Append(Utils.FitStringLength(sequencia.ToString(), 6, 6, '0', 0, true, true, true));
 
 			// Número sequencial do registro no arquivo.

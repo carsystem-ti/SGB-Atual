@@ -23,8 +23,9 @@ namespace SGB {
 
         BaixaSafra formSafra;
         CSTech formTechnology;
+        Remessa RemessaDaycoval;
 
-        
+
 
         SuperSolicit formSuperSolicit;
 
@@ -188,7 +189,17 @@ namespace SGB {
             formSafra.Activate();
         }
 
-       
+        private void btnDaycoval_Click(object sender, EventArgs e)
+        {
+            if (RemessaDaycoval == null || RemessaDaycoval.IsDisposed)
+            {
+                RemessaDaycoval = null;
+                RemessaDaycoval = new Remessa();
+                RemessaDaycoval.Show();
+
+            }
+            RemessaDaycoval.Activate();
+        }
     }
 }
 

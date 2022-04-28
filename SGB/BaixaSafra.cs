@@ -622,7 +622,7 @@ namespace BoletoNet.Arquivo
                         if (openFileDialog.CheckFileExists == true)
                         {
                             cnab400 = new ArquivoRetornoCNAB400();
-                        
+                            _arquivo = openFileDialog.FileName;
                             cnab400.LinhaDeArquivoLida += new EventHandler<LinhaDeArquivoLidaArgs>(cnab400_LinhaDeArquivoLida);
                            // cnab400.LerArquivoRetorno(bco, openFileDialog.OpenFile());
                             using (StreamReader sr = new StreamReader(openFileDialog.OpenFile()))
@@ -650,7 +650,7 @@ namespace BoletoNet.Arquivo
                             ListViewItem li = new ListViewItem(detalhe.NomeSacado);
                             li.Tag = detalhe;
 
-                            li.SubItems.Add(detalhe.DataDaOcorrencia.ToString("dd/MM/yy"));
+                            li.SubItems.Add(detalhe.DataDeVencimento.ToString("dd/MM/yy"));
                             li.SubItems.Add(detalhe.DataDaOcorrencia.ToString("dd/MM/yy"));
 
                             li.SubItems.Add(detalhe.ValorDoTituloParcela.ToString("###,###.00"));
@@ -993,7 +993,7 @@ namespace BoletoNet.Arquivo
 
             dados.retornaDados = true;
             dados.execute();
-            
+
             return Convert.ToInt32(dados.Comandos.getRetornoParametro("@retorno").ToString());
         }
         public string getDescricaoRetornoBaixa(int retorno)
@@ -1189,6 +1189,44 @@ namespace BoletoNet.Arquivo
 
 
                 }
+
+                geraArquivo();
+                MessageBox.Show("Foram processadas: " + _Baixas.ToString() + " baixas");
+            }
+            if (rdbDaycoval.Checked == true)
+            {
+                _id_retorno = gravaArquivo(_arquivo);
+                int _Baixas = 0;
+                int _retornoBaixa = 0;
+                foreach (ListViewItem itemRow in lstReturnFields.Items)
+                {
+                    string Nome = itemRow.SubItems[0].Text;
+                    string DataVencimento = itemRow.SubItems[1].Text;
+                    string DataCredito = itemRow.SubItems[2].Text;
+                    string ValorTitulo = itemRow.SubItems[3].Text;
+                    float ValorPago = float.Parse(itemRow.SubItems[4].Text);
+                    string CodRetorno = itemRow.SubItems[5].Text;
+                    string situacao = itemRow.SubItems[6].Text;
+
+                    string NossoNumero = itemRow.SubItems[7].Text;
+                    if (ValorPago > 0)
+                    {
+
+                        _retornoBaixa = setBaixa(NossoNumero, ValorPago, _id_retorno, 707);
+                        string ds_baixa = getDescricaoRetornoBaixa(_retornoBaixa);
+                        itemRow.SubItems[6].Text = ds_baixa;
+                        if (ds_baixa == "baixado")
+                        {
+                            _Baixas = _Baixas + 1;
+
+                        }
+
+
+                    }
+
+
+                }
+
                 geraArquivo();
                 MessageBox.Show("Foram processadas: " + _Baixas.ToString() + " baixas");
             }
