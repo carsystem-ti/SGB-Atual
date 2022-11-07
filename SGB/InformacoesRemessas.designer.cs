@@ -44,7 +44,6 @@ namespace geracaoRemessa.Formulario
             this.btn_etiqueta.TabIndex = 11;
             this.btn_etiqueta.Text = "&Etiquetas";
             this.btn_etiqueta.UseVisualStyleBackColor = true;
-            this.btn_etiqueta.Click += new System.EventHandler(this.btn_etiqueta_Click);
             // 
             // comboEmpresa
             // 

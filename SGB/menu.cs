@@ -24,6 +24,8 @@ namespace SGB {
         BaixaSafra formSafra;
         CSTech formTechnology;
         Remessa RemessaDaycoval;
+        Serasa RemessaSerasa;
+
 
 
 
@@ -199,6 +201,18 @@ namespace SGB {
 
             }
             RemessaDaycoval.Activate();
+        }
+
+        private void btnSerasa_Click(object sender, EventArgs e)
+        {
+            if (RemessaSerasa == null || RemessaSerasa.IsDisposed)
+            {
+                RemessaSerasa = null;
+                RemessaSerasa = new Serasa();
+                RemessaSerasa.Show();
+
+            }
+            RemessaSerasa.Activate();
         }
     }
 }

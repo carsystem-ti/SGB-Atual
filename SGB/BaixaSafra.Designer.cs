@@ -224,7 +224,7 @@
             // cNABToolStripMenuItem
             // 
             this.cNABToolStripMenuItem.Name = "cNABToolStripMenuItem";
-            this.cNABToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.cNABToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cNABToolStripMenuItem.Text = "&Remessa";
             // 
             // retornoToolStripMenuItem1
@@ -233,21 +233,22 @@
             this.lerToolStripMenuItem1,
             this.gerarToolStripMenuItem1});
             this.retornoToolStripMenuItem1.Name = "retornoToolStripMenuItem1";
-            this.retornoToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.retornoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.retornoToolStripMenuItem1.Text = "R&etorno";
             // 
             // lerToolStripMenuItem1
             // 
             this.lerToolStripMenuItem1.Name = "lerToolStripMenuItem1";
-            this.lerToolStripMenuItem1.Size = new System.Drawing.Size(102, 22);
+            this.lerToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.lerToolStripMenuItem1.Text = "&Ler";
             this.lerToolStripMenuItem1.Click += new System.EventHandler(this.lerToolStripMenuItem1_Click_1);
             // 
             // gerarToolStripMenuItem1
             // 
             this.gerarToolStripMenuItem1.Name = "gerarToolStripMenuItem1";
-            this.gerarToolStripMenuItem1.Size = new System.Drawing.Size(102, 22);
+            this.gerarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.gerarToolStripMenuItem1.Text = "&Gerar";
+            this.gerarToolStripMenuItem1.Click += new System.EventHandler(this.gerarToolStripMenuItem1_Click_1);
             // 
             // radioButtonItau
             // 

@@ -729,5 +729,15 @@ namespace SGB
 			Boleto boleto = new Boleto();
 			GerarHeaderRemessaCNABNew(190605012100);
 		}
+
+        private void lbl_selecionados_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

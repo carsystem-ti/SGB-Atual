@@ -48,6 +48,7 @@ namespace SGB
             Label14.TabIndex = 48;
             Label14.Text = "Quantidade de boletos processados";
             Label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Label14.Click += new System.EventHandler(this.Label14_Click);
             // 
             // lbl_titulo
             // 
@@ -73,6 +74,7 @@ namespace SGB
             this.lbl_selecionados.TabIndex = 49;
             this.lbl_selecionados.Text = "0000000";
             this.lbl_selecionados.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_selecionados.Click += new System.EventHandler(this.lbl_selecionados_Click);
             // 
             // cmdPesquisar
             // 

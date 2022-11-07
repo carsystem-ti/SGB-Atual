@@ -293,6 +293,12 @@
     <Compile Include="Interfaces\IEspecieDocumento.cs" />
     <Compile Include="Interfaces\IInstrucao.cs" />
     <Compile Include="Interfaces\ILeitorArquivoRetornoCnab400.cs" />
+    <Compile Include="loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="loading.Designer.cs">
+      <DependentUpon>loading.cs</DependentUpon>
+    </Compile>
     <Compile Include="menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,6 +370,9 @@
       <DependentUpon>InformacoesRemessas.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="loading.resx">
+      <DependentUpon>loading.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="menu.resx">
       <DependentUpon>menu.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -389,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Remessa.resx">
       <DependentUpon>Remessa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Serasa.resx">
+      <DependentUpon>Serasa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SolicitacoesSGB.resx">
       <DependentUpon>SolicitacoesSGB.cs</DependentUpon>
@@ -437,6 +449,13 @@
     <Compile Include="Remessa.Designer.cs">
       <DependentUpon>Remessa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Serasa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Serasa.Designer.cs">
+      <DependentUpon>Serasa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerasaModel.cs" />
     <Compile Include="Service References\tmkService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -454,6 +473,7 @@
     <Compile Include="SuperSolicit.Designer.cs">
       <DependentUpon>SuperSolicit.cs</DependentUpon>
     </Compile>
+    <Compile Include="teste.cs" />
     <Compile Include="TMK.cs" />
     <Compile Include="transfPagamentos.cs">
       <SubType>Form</SubType>

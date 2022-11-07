@@ -984,7 +984,7 @@ namespace BoletoNet.Arquivo
             dados.Comandos.tipoComando = CommandType.StoredProcedure;
             dados.Comandos.adicionaParametro("@nossoNumero", SqlDbType.VarChar, 12, pNossoNumero);
             dados.Comandos.adicionaParametro("@valor", SqlDbType.Money, 12, vl_pago);
-            dados.Comandos.adicionaParametro("@usuario", SqlDbType.VarChar, 12, Environment.UserName);
+            dados.Comandos.adicionaParametro("@usuario", SqlDbType.VarChar, 80, Environment.UserName);
             dados.Comandos.adicionaParametro("@tipoBaixa", SqlDbType.VarChar, 12, "LQ Normal");
             dados.Comandos.adicionaParametro("@codigoArquivo", SqlDbType.VarChar, 12, id_baixa);
             dados.Comandos.adicionaParametro("@nr_banco", SqlDbType.Int, 12, nr_banco);
@@ -1233,6 +1233,9 @@ namespace BoletoNet.Arquivo
 
         }
 
-       
+        private void gerarToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
