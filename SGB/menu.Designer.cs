@@ -43,6 +43,7 @@
             this.cmdRetornoBradesco = new System.Windows.Forms.Button();
             this.btnDaycoval = new System.Windows.Forms.Button();
             this.btnSerasa = new System.Windows.Forms.Button();
+            this.btnRemessa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -225,12 +226,26 @@
             this.btnSerasa.UseVisualStyleBackColor = false;
             this.btnSerasa.Click += new System.EventHandler(this.btnSerasa_Click);
             // 
+            // btnRemessa
+            // 
+            this.btnRemessa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRemessa.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRemessa.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRemessa.Location = new System.Drawing.Point(236, 364);
+            this.btnRemessa.Name = "btnRemessa";
+            this.btnRemessa.Size = new System.Drawing.Size(200, 33);
+            this.btnRemessa.TabIndex = 5;
+            this.btnRemessa.Text = "Remessa Red Asset";
+            this.btnRemessa.UseVisualStyleBackColor = false;
+            this.btnRemessa.Click += new System.EventHandler(this.btnRemessa_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(466, 412);
+            this.Controls.Add(this.btnRemessa);
             this.Controls.Add(this.btnSerasa);
             this.Controls.Add(this.btnDaycoval);
             this.Controls.Add(this.btnSafra);
@@ -273,5 +288,6 @@
         private System.Windows.Forms.Button btnSafra;
         private System.Windows.Forms.Button btnDaycoval;
         private System.Windows.Forms.Button btnSerasa;
+        private System.Windows.Forms.Button btnRemessa;
     }
 }

@@ -125,13 +125,29 @@ namespace SGB
             }
 
         }
-        private DataSet getBoletos(string remessa)
+        private DataSet getBoletos(string remessa,int id_status)
         {
             DataSet ds = new DataSet();
             dados.Comandos.limpaParametros();
             dados.Comandos.textoComando = "Principal.[Negativacao].[pro_getArquivoRemessa]";
             dados.Comandos.tipoComando = CommandType.StoredProcedure;
             dados.Comandos.adicionaParametro("@id_remessa", SqlDbType.VarChar, 12, remessa);
+            dados.Comandos.adicionaParametro("@id_status", SqlDbType.VarChar, 12, id_status);
+
+            dados.retornaDados = true;
+            ds = dados.execute();
+
+            return ds;
+        }
+        private DataSet getDividasInad(string remessa, int id_status)
+        {
+            DataSet ds = new DataSet();
+            dados.Comandos.limpaParametros();
+            dados.Comandos.textoComando = "Principal.[Negativacao].[pro_getArquivoRemessaInad]";
+            dados.Comandos.tipoComando = CommandType.StoredProcedure;
+            dados.Comandos.adicionaParametro("@id_remessa", SqlDbType.VarChar, 12, remessa);
+            dados.Comandos.adicionaParametro("@id_status", SqlDbType.VarChar, 12, id_status);
+
             dados.retornaDados = true;
             ds = dados.execute();
 
@@ -357,7 +373,7 @@ namespace SGB
 
 
 
-                    DataSet ds = getBoletos(id_remessa);
+                    DataSet ds = getDividasInad(id_remessa,1);
 
                     ///sageBox.Show("Quantidade de Boletos a ser processado : " + ds.Tables.Count.ToString() + " !!!");
                     ///sageBox.Show("Quantidade de Boletos a ser processado : " + ds.Tables.Count.ToString() + " !!!");
@@ -806,7 +822,7 @@ namespace SGB
                     //dsRegistro = getRangeSerasa(id_remessa);
                     string nomeArquivo = "Exclusao";
                     //dsRegistro.Tables[0].Rows[0]["ds_remessa"].ToString();
-                    id_remessa = "28";
+                    id_remessa = id_remessa.ToString();
                         //dsRegistro.Tables[0].Rows[0]["id_remessa"].ToString();
                     Stream arquivo = File.OpenWrite(@"C:\\TEMP\" + "EXCLUSAO-" + nomeArquivo.ToString() + ".txt"); // @"C:\Temp\Mahesh.txt";
                     StreamWriter gravaLinha = new StreamWriter(arquivo);
@@ -880,7 +896,7 @@ namespace SGB
 
 
 
-                    DataSet ds = getBoletos(id_remessa);
+                    DataSet ds = getBoletos(id_remessa,3);
 
                     ///sageBox.Show("Quantidade de Boletos a ser processado : " + ds.Tables.Count.ToString() + " !!!");
                     ///sageBox.Show("Quantidade de Boletos a ser processado : " + ds.Tables.Count.ToString() + " !!!");
@@ -1498,7 +1514,5 @@ namespace SGB
 
             }
         }
-
-
     }
 }

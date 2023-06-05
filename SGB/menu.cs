@@ -23,11 +23,11 @@ namespace SGB {
 
         BaixaSafra formSafra;
         CSTech formTechnology;
-        Remessa RemessaDaycoval;
+        RemessaBoletoSafra RemessaDaycoval;
         Serasa RemessaSerasa;
-
-
-
+        RemessaBoletoSafra ArquivoSafra;
+        ArquivoRemessaSafra ArquivoRetornoSafra;
+        RemessaRedAsset Red;
 
         SuperSolicit formSuperSolicit;
 
@@ -196,7 +196,7 @@ namespace SGB {
             if (RemessaDaycoval == null || RemessaDaycoval.IsDisposed)
             {
                 RemessaDaycoval = null;
-                RemessaDaycoval = new Remessa();
+                RemessaDaycoval = new RemessaBoletoSafra();
                 RemessaDaycoval.Show();
 
             }
@@ -213,6 +213,31 @@ namespace SGB {
 
             }
             RemessaSerasa.Activate();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (ArquivoSafra == null || ArquivoSafra.IsDisposed)
+            {
+                ArquivoSafra = null;
+                ArquivoSafra = new RemessaBoletoSafra();
+                ArquivoSafra.Show();
+
+            }
+            ArquivoSafra.Activate();
+        }
+
+        private void btnRemessa_Click(object sender, EventArgs e)
+        {
+            
+            if (Red == null || Red.IsDisposed)
+            {
+                Red = null;
+                Red = new RemessaRedAsset();
+                Red.Show();
+
+            }
+            Red.Activate();
         }
     }
 }
